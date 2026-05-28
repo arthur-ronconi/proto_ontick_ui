@@ -35,8 +35,45 @@
       </button>
     </div>
   </div>
-  <div v-else>
-    {{ type }}
+  <div
+    v-else
+    class="flex items-center gap-2 relative"
+  >
+    <input
+      :type="derived_type"
+      :class="nonTextStyles[type as NonTextInputType]"
+      :name="name"
+      :id="name"
+      :value="value"
+      v-model="model"
+    />
+    <svg
+      v-if="type === 'checkbox'"
+      class="absolute h-4 w-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200 pointer-events-none left-1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span
+      v-if="type === 'switch'"
+      class="absolute top-1/2 -translate-y-1/2 h-6 w-6 rounded-full bg-ontick-graphite-50 pointer-events-none left-0 peer-checked:left-6 transition-all ring-2 ring-inset ring-ontick-graphite-200 peer-checked:ring-primary"
+    ></span>
+    <span
+      v-if="type === 'radio'"
+      class="absolute top-1/2 -translate-y-1/2 left-1.5 h-3 w-3 rounded-full peer-checked:bg-ontick-graphite-50 pointer-events-none transition-all"
+    ></span>
+    <label
+      :for="name"
+      class="text-sm"
+    >
+      {{ label }}
+    </label>
   </div>
 </template>
 
@@ -83,6 +120,14 @@ const derived_type = computed<OTInputType>(() => {
 
   return result;
 });
+
+const nonTextStyles: {
+  [K in NonTextInputType]: string;
+} = {
+  checkbox: 'appearance-none h-6 w-6 rounded bg-ontick-graphite-200 checked:bg-primary peer',
+  switch: 'appearance-none w-12 h-6 rounded-full bg-ontick-graphite-200 checked:bg-primary peer',
+  radio: 'appearance-none h-6 w-6 rounded-full bg-ontick-graphite-200 checked:bg-primary peer',
+} as const;
 
 function handleClick(type: 'password' | 'search') {
   if (type === 'password') {

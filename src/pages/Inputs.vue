@@ -53,6 +53,14 @@
               v-model="data.search"
               @search="onSearch"
             />
+            <div>
+              <p class="text-sm">Nome: {{ data.text }}</p>
+              <p class="text-sm">Idade: {{ data.number }}</p>
+              <p class="text-sm">Email: {{ data.email }}</p>
+              <p class="text-sm">Senha: {{ data.password }}</p>
+              <p class="text-sm">Telefone: {{ data.tel }}</p>
+              <p class="text-sm">Busca: {{ data.search }}</p>
+            </div>
           </div>
         </div>
         <div class="flex flex-col gap-4">
@@ -60,8 +68,67 @@
             <span class="text-ontick-gray-400"> // </span>
             Checkboxes, Switches e Radios
           </h3>
-          <div class="flex flex-col gap-4">
-            <h4 class="texl-lg">Checkbox</h4>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="flex flex-col gap-4">
+              <h4 class="texl-lg">Checkbox</h4>
+              <OTInput
+                type="checkbox"
+                v-model="data.checkbox"
+                name="check_1"
+                label="Escolha 1"
+                value="Escolha 1"
+              />
+              <OTInput
+                type="checkbox"
+                v-model="data.checkbox"
+                name="check_1"
+                label="Escolha 1"
+                value="Escolha 2"
+              />
+              <OTInput
+                type="checkbox"
+                v-model="data.checkbox"
+                name="check_1"
+                label="Escolha 1"
+                value="Escolha 3"
+              />
+              <p class="text-sm">Selecionados: {{ data.checkbox }}</p>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="texl-lg">Switch</h4>
+              <OTInput
+                type="switch"
+                v-model="data.switch"
+                name="switch"
+                label="Enviar notificações"
+              />
+              <p class="text-sm">Selecionado: {{ data.switch }}</p>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h4 class="texl-lg">Checkbox</h4>
+              <OTInput
+                type="radio"
+                v-model="data.radio"
+                name="radio_1"
+                label="Escolha 1"
+                value="Escolha 1"
+              />
+              <OTInput
+                type="radio"
+                v-model="data.radio"
+                name="radio_1"
+                label="Escolha 1"
+                value="Escolha 2"
+              />
+              <OTInput
+                type="radio"
+                v-model="data.radio"
+                name="radio_1"
+                label="Escolha 1"
+                value="Escolha 3"
+              />
+              <p class="text-sm">Selecionados: {{ data.radio }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -82,6 +149,9 @@ const data = reactive({
   password: '',
   tel: '',
   search: '',
+  checkbox: [],
+  switch: false,
+  radio: '',
 });
 
 function onSearch() {
