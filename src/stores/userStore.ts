@@ -1,10 +1,10 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 
-export const useCounterStore = defineStore('counter', () => {
+export const useUserStore = defineStore('userStore', () => {
   const dark_mode = ref(localStorage.getItem('dark') === 'true');
 
-  const getDarkMode = computed(() => {
+  const isDarkMode = computed(() => {
     return dark_mode.value;
   });
 
@@ -13,5 +13,5 @@ export const useCounterStore = defineStore('counter', () => {
     localStorage.set('dark', dark_mode.value);
   }
 
-  return { getDarkMode, setDarkMode };
+  return { isDarkMode, setDarkMode };
 });

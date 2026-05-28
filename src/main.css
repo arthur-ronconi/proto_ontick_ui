@@ -182,14 +182,26 @@
 
   /* Cores semânticas */
   --color-primary: var(--color-green-500);
-  --color-secondary: var(--color-blue-600);
-  --color-destructive: var(--color-red-600);
+  --color-secondary: var(--color-blue-500);
+  --color-destructive: var(--color-red-500);
   --color-disabled: var(--color-ontick-gray-500);
 }
 
 html,
 body,
 #app {
-  @apply h-full bg-ontick-gray-50 text-ontick-carbon-900 dark:bg-ontick-graphite-900 dark:text-ontick-gray-300;
+  @apply h-full bg-ontick-gray-200 text-ontick-carbon-500 dark:bg-ontick-graphite-900 dark:text-ontick-gray-300;
   font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+button {
+  @apply flex items-center gap-2 hover:brightness-110 active:brightness-90 transition-all duration-100 cursor-pointer;
+}
+
+input {
+  @apply focus:outline-2 outline-primary;
+}
+
+:disabled {
+  @apply opacity-25 cursor-not-allowed brightness-100!;
 }

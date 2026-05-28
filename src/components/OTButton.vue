@@ -1,35 +1,58 @@
 <template>
   <button
     :class="[
-      'py-2 px-4 rounded-lg flex items-center justify-center hover:brightness-110 active:brightness-90 disabled:bg-disabled shadow active:shadow-none active:inset-shadow-sm inset-shadow-black/25 transition-all duration-100',
+      'transition-all rounded-lg justify-center',
+      size === 'icon' ? 'px-2' : 'py-2 px-4',
       getColor(variant),
     ]"
   >
-    <slot />
+    <OTIcon
+      v-if="icon && iconPosition === 'left'"
+      :name="icon"
+    />
+    <slot v-if="size !== 'icon'" />
+    <OTIcon
+      v-if="icon && iconPosition === 'right'"
+      :name="icon"
+    />
   </button>
 </template>
 
 <script setup lang="ts">
-type OTButtonVariants = 'default' | 'secondary' | 'outlined' | 'ghost' | 'destructive';
+import OTIcon from './OTIcon.vue';
+import type { ColorVariants } from './types.ts';
+type OTButtonVariants = ColorVariants;
+type OTButtonSizes = 'default' | 'icon';
 interface OTButtonProps {
   variant?: OTButtonVariants;
-  custom_styles?: boolean;
+  customStyles?: boolean;
+  size?: OTButtonSizes;
+  icon?: string;
+  iconPosition?: 'left' | 'right';
 }
 const props = withDefaults(defineProps<OTButtonProps>(), {
   variant: 'default',
-  custom_styles: false,
+  customStyles: false,
+  iconPosition: 'left',
 });
 
 const colors = {
   default: 'bg-primary text-ontick-graphite-900',
-  secondary: 'bg-primary text-ontick-graphite-900',
-  outlined: 'bg-transparent border-2 border-ontick-steel-500 text-ontick-steel-500',
+  secondary: 'bg-secondary text-ontick-graphite-900',
+  outlined: 'bg-transparent ring-2 ring-inset ring-ontick-steel-500 text-ontick-steel-500',
   ghost: '',
   destructive: 'bg-ontick-red-600 text-ontick-red-300',
 };
 
 function getColor(variant: OTButtonVariants) {
   return colors[variant];
+}
+
+function iconPadding(size: OTButtonSizes): string {
+  if (size === 'icon') {
+    return 'p-2';
+  }
+  return 'py-2 px-4';
 }
 </script>
 
