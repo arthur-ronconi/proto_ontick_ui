@@ -22,6 +22,13 @@ const nav: import('./components/types').OTSidebarNavItem[] = [
       router.push({ name: 'Inputs' });
     },
   },
+  {
+    name: 'Badges',
+    icon: false,
+    action() {
+      router.push({ name: 'Todo' });
+    },
+  },
 ];
 
 provide('sidebar-nav', nav);

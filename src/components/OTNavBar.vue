@@ -7,12 +7,8 @@
           alt="OnTick Logo"
         />
       </slot>
-      <slot name="center">
-        <p>Center</p>
-      </slot>
-      <slot name="right">
-        <p>Right</p>
-      </slot>
+      <slot name="center"> </slot>
+      <slot name="right"> </slot>
     </div>
   </header>
 </template>

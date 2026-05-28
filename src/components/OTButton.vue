@@ -37,11 +37,11 @@ const props = withDefaults(defineProps<OTButtonProps>(), {
 });
 
 const colors = {
-  default: 'bg-primary text-ontick-graphite-900',
-  secondary: 'bg-secondary text-ontick-graphite-900',
+  default: 'bg-primary text-ontick-green-200',
+  secondary: 'bg-secondary text-ontick-blue-200',
   outlined: 'bg-transparent ring-2 ring-inset ring-ontick-steel-500 text-ontick-steel-500',
   ghost: '',
-  destructive: 'bg-ontick-red-600 text-ontick-red-300',
+  destructive: 'bg-ontick-red-600 text-ontick-red-200',
 };
 
 function getColor(variant: OTButtonVariants) {

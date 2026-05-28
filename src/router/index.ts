@@ -1,6 +1,7 @@
 import Buttons from '@/pages/Buttons.vue';
 import Inputs from '@/pages/Inputs.vue';
 import Showcase from '@/pages/Showcase.vue';
+import Todo from '@/pages/Todo.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -20,6 +21,11 @@ const router = createRouter({
           name: 'Inputs',
           path: 'inputs',
           component: Inputs,
+        },
+        {
+          name: 'Todo',
+          path: 'todo',
+          component: Todo,
         },
       ],
       redirect: '/buttons',
